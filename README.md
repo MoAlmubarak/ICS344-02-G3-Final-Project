@@ -3,39 +3,33 @@
 
 ## Team Information
 
-### Group Number: [Your Group Number]
+### Group Number: 02
 
 ### Team Members:
-- **Mohammed Almubarak** - [Student ID]
-- **Ammar** - [Student ID]
-- **[Member 3 Name]** - [Student ID]
+- **Mohammed Almubarak** - 202024880
+- **Ammar Alabdullah** - 202024140
+- **Ahmed Alajwad** - 201935930
 
 ## Work Distribution
 
 ### Phase 1: Setup and Compromise the Service
-- **Mohammed Almubarak**: Environment setup, reconnaissance, vulnerability identification
-- **Ammar**: Metasploit exploitation, documentation
-- **[Member 3]**: Custom script development, testing
+- **Mohammed Almubarak**: Environment setup, reconnaissance, vulnerability identification, metasploit exploitation, documentation, Custom script development, testing
 
 ### Phase 2: Visual Analysis with a SIEM Dashboard
-- **Mohammed Almubarak**: Splunk server setup, forwarder configuration
-- **Ammar**: Log integration, dashboard creation
-- **[Member 3]**: Attack visualization, pattern analysis
+- **Ammar Alabdullah**: Splunk server setup, forwarder configuration Log, integration, dashboard creation, visualization, pattern analysis
 
 ### Phase 3: Defensive Strategy Proposal
-- **Mohammed Almubarak**: Network-level defenses, testing
-- **Ammar**: File permission hardening, documentation
-- **[Member 3]**: User account security, before/after comparison
+- **Mohammed, Ammar, Ahmed**: Network-level defenses, testing, File permission hardening, documentation, User account security, before/after comparison
 
 ## Project Overview
 
 This repository contains our comprehensive work for the ICS344 Cybersecurity Project, which involved setting up and attacking a vulnerable service, analyzing the attack with a SIEM platform, and proposing a defensive strategy.
 
 ### Phase 1: Setup and Compromise the Service
-In this phase, we set up Metasploitable3 as our victim machine and Kali Linux as our attack platform. We identified vulnerabilities in the ProFTPD service and successfully exploited them using both Metasploit Framework and a custom Python script.
+In this phase, we set up Metasploitable3 as our victim machine and Kali Linux as our attack platform. We identified vulnerabilities in the ProFTPD service and successfully exploited them using the Metasploit Framework and a custom Python script.
 
 ### Phase 2: Visual Analysis with a SIEM Dashboard
-We implemented Splunk as our SIEM solution, collecting and analyzing logs from both the victim and attacker machines. We created comprehensive dashboards to visualize attack patterns and established detection mechanisms for FTP-based attacks.
+We implemented Splunk as our SIEM solution, collecting and analyzing logs from the victim and attacker machines. We created comprehensive dashboards to visualize attack patterns and established detection mechanisms for FTP-based attacks.
 
 ### Phase 3: Defensive Strategy Proposal
 Based on our findings from previous phases, we implemented multiple layers of defense to protect against the ProFTPD vulnerability. Our defense strategy included network filtering with iptables, file permission hardening, and user account restrictions. We demonstrated the effectiveness of our defenses through comprehensive testing.
