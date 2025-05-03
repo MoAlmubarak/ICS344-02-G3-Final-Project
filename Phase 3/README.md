@@ -1,59 +1,61 @@
-# ICS344-02-G3-Final-Project
-# ICS344 Cybersecurity Project
 
-## Team Information
+---
 
-### Group Number: 02
+### Phase 3: Defensive Strategy for ProFTPD Vulnerability
 
-### Team Members:
-- **Mohammed Almubarak** - 202024880
-- **Ammar Alabdullah** - 202024140
-- **Ahmed Alajwad** - 201935930
+```markdown
+# Phase 3: Defensive Strategy for ProFTPD Vulnerability
 
-## Work Distribution
+## Overview
+In this phase, we implemented a defense-in-depth strategy to mitigate the ProFTPD `mod_copy` vulnerability, using firewall rules, real-time monitoring, and file integrity validation.
 
-### Phase 1: Setup and Compromise the Service
-- **Mohammed Almubarak**: Environment setup, reconnaissance, vulnerability identification, metasploit exploitation, documentation, Custom script development, testing
+## Defensive Measures
 
-### Phase 2: Visual Analysis with a SIEM Dashboard
-- **Ammar Alabdullah**: Splunk server setup, forwarder configuration Log, integration, dashboard creation, visualization, pattern analysis
+### 1. Network-Level Protection (iptables)
+- Configured rules to allow FTP access only from trusted IPs (Kali Linux).
+- Denied all other inbound FTP connections.
 
-### Phase 3: Defensive Strategy Proposal
-- **Mohammed, Ammar, Ahmed**: Network-level defenses, testing, File permission hardening, documentation, User account security, before/after comparison
+### 2. Real-Time FTP Traffic Monitoring
+- Deployed a script to monitor FTP traffic.
+- Detected `SITE CPFR` and `SITE CPTO` usage.
+- Logged suspicious activity and blocked attacker IPs automatically.
 
-## Project Overview
+### 3. File Integrity Monitoring
+- Monitored MD5 hashes of critical system files.
+- Alerted on any unauthorized changes suggesting compromise.
 
-This repository contains our comprehensive work for the ICS344 Cybersecurity Project, which involved setting up and attacking a vulnerable service, analyzing the attack with a SIEM platform, and proposing a defensive strategy.
+### 4. Persistent Firewall Rules
+- Startup script saved at `/etc/network/if-pre-up.d/iptables`.
+- Ensured `iptables` rules persisted across reboots.
 
-### Phase 1: Setup and Compromise the Service
-In this phase, we set up Metasploitable3 as our victim machine and Kali Linux as our attack platform. We identified vulnerabilities in the ProFTPD service and successfully exploited them using the Metasploit Framework and a custom Python script.
+## Defense Validation
 
-### Phase 2: Visual Analysis with a SIEM Dashboard
-We implemented Splunk as our SIEM solution, collecting and analyzing logs from the victim and attacker machines. We created comprehensive dashboards to visualize attack patterns and established detection mechanisms for FTP-based attacks.
+### Before Implementation
+- Exploit was successful (Phase 1).
+- Demonstrated file access and command execution.
 
-### Phase 3: Defensive Strategy Proposal
-Based on our findings from previous phases, we implemented multiple layers of defense to protect against the ProFTPD vulnerability. Our defense strategy included network filtering with iptables, file permission hardening, and user account restrictions. We demonstrated the effectiveness of our defenses through comprehensive testing.
+### After Implementation
+- Exploit failed: system directory non-writable.
+- Logs confirmed detection and IP blocking.
 
-## Repository Structure
+## Security Analysis
+- **Prevention**: FTP access limited via IP restrictions.
+- **Detection**: Monitoring identified exploit patterns.
+- **Response**: Automated IP blocking in real time.
+- **Verification**: File integrity checks caught changes.
 
-```
-ICS344-Project/
-├── README.md                   # This file
-├── Phase1/                     # Setup and exploitation
-│   ├── README.md               # Phase 1 documentation
-│   └── ...                     # Scripts, screenshots, etc.
-├── Phase2/                     # SIEM analysis
-│   ├── README.md               # Phase 2 documentation
-│   └── ...                     # Dashboard configs, screenshots, etc.
-└── Phase3/                     # Defense strategy
-    ├── README.md               # Phase 3 documentation
-    └── ...                     # Defense implementation, testing evidence, etc.
-```
+## Key Lessons
+1. Layered defenses are most effective.
+2. Firewall rules are essential first-line defenses.
+3. Real-time detection speeds up response.
+4. File integrity monitoring confirms breaches.
 
-## Tools and Technologies Used
+## Recommendations
+- Harden ProFTPD configuration.
+- Regular patch management.
+- Expand logging scope.
+- Educate users on secure FTP usage.
+- Perform periodic vulnerability assessments.
 
-- **Virtual Environments**: VirtualBox
-- **Vulnerable Target**: Metasploitable3
-- **Attack Platform**: Kali Linux
-- **SIEM Solution**: Splunk Enterprise
-- **Security Tools**: Metasploit Framework, iptables, custom Python scripts
+## Conclusion
+Our layered security approach effectively neutralized the previously exploitable vulnerability. This defensive architecture enhances resilience against similar threats in real-world environments.
