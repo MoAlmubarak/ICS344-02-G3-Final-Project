@@ -1,9 +1,3 @@
-
----
-
-### Phase 3: Defensive Strategy for ProFTPD Vulnerability
-
-```markdown
 # Phase 3: Defensive Strategy for ProFTPD Vulnerability
 
 ## Overview
