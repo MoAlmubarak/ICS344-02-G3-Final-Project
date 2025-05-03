@@ -1,59 +1,50 @@
-# ICS344-02-G3-Final-Project
-# ICS344 Cybersecurity Project
+# Phase 1: Setup and Service Exploitation
 
-## Team Information
+## Overview
+This phase focuses on establishing a penetration testing lab using Metasploitable3 and Kali Linux, discovering vulnerabilities, and exploiting them to simulate a real-world cyberattack scenario.
 
-### Group Number: 02
+## Environment Setup
+- **Target Machine**: Metasploitable3
+- **Attacker Machine**: Kali Linux
+- **Virtualization Platform**: VirtualBox
+- **Network Configuration**: Host-only or Bridged network to ensure VM communication
 
-### Team Members:
-- **Mohammed Almubarak** - 202024880
-- **Ammar Alabdullah** - 202024140
-- **Ahmed Alajwad** - 201935930
+## Steps Performed
 
-## Work Distribution
+### Metasploitable3 Setup
+1. Downloaded Metasploitable3 OVA.
+2. Imported it into VirtualBox.
+3. Configured network settings.
+4. Verified functionality and connectivity.
 
-### Phase 1: Setup and Compromise the Service
-- **Mohammed Almubarak**: Environment setup, reconnaissance, vulnerability identification, metasploit exploitation, documentation, Custom script development, testing
+### Kali Linux Setup
+1. Installed Kali Linux in VirtualBox.
+2. Configured the network to allow communication with Metasploitable3.
+3. Verified connectivity via ping.
 
-### Phase 2: Visual Analysis with a SIEM Dashboard
-- **Ammar Alabdullah**: Splunk server setup, forwarder configuration Log, integration, dashboard creation, visualization, pattern analysis
+## Vulnerability Discovery
+- Conducted full port scans.
+- Identified ProFTPD 1.3.5 running on port 21.
 
-### Phase 3: Defensive Strategy Proposal
-- **Mohammed, Ammar, Ahmed**: Network-level defenses, testing, File permission hardening, documentation, User account security, before/after comparison
+## Exploitation
 
-## Project Overview
+### Using Metasploit
+- Located and executed the `mod_copy` exploit in Metasploit.
+- Successfully accessed and copied system files.
 
-This repository contains our comprehensive work for the ICS344 Cybersecurity Project, which involved setting up and attacking a vulnerable service, analyzing the attack with a SIEM platform, and proposing a defensive strategy.
+### Custom Script Exploit
+- Developed a Python script to exploit the ProFTPD vulnerability.
+- Demonstrated exploit effectiveness through file access.
 
-### Phase 1: Setup and Compromise the Service
-In this phase, we set up Metasploitable3 as our victim machine and Kali Linux as our attack platform. We identified vulnerabilities in the ProFTPD service and successfully exploited them using the Metasploit Framework and a custom Python script.
+## Security Implications
+- Unauthenticated file access.
+- Potential for web shell deployment.
+- System file exposure.
 
-### Phase 2: Visual Analysis with a SIEM Dashboard
-We implemented Splunk as our SIEM solution, collecting and analyzing logs from the victim and attacker machines. We created comprehensive dashboards to visualize attack patterns and established detection mechanisms for FTP-based attacks.
+## Recommendations
+- Update ProFTPD.
+- Disable unnecessary modules (e.g., `mod_copy`).
+- Implement strong access controls and regular patching.
 
-### Phase 3: Defensive Strategy Proposal
-Based on our findings from previous phases, we implemented multiple layers of defense to protect against the ProFTPD vulnerability. Our defense strategy included network filtering with iptables, file permission hardening, and user account restrictions. We demonstrated the effectiveness of our defenses through comprehensive testing.
-
-## Repository Structure
-
-```
-ICS344-Project/
-├── README.md                   # This file
-├── Phase1/                     # Setup and exploitation
-│   ├── README.md               # Phase 1 documentation
-│   └── ...                     # Scripts, screenshots, etc.
-├── Phase2/                     # SIEM analysis
-│   ├── README.md               # Phase 2 documentation
-│   └── ...                     # Dashboard configs, screenshots, etc.
-└── Phase3/                     # Defense strategy
-    ├── README.md               # Phase 3 documentation
-    └── ...                     # Defense implementation, testing evidence, etc.
-```
-
-## Tools and Technologies Used
-
-- **Virtual Environments**: VirtualBox
-- **Vulnerable Target**: Metasploitable3
-- **Attack Platform**: Kali Linux
-- **SIEM Solution**: Splunk Enterprise
-- **Security Tools**: Metasploit Framework, iptables, custom Python scripts
+## Conclusion
+We successfully identified and exploited a major vulnerability in a controlled environment, laying the groundwork for monitoring and defensive strategies in future phases.
