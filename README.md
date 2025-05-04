@@ -19,7 +19,7 @@
 - **Ammar Alabdullah**: Splunk server setup, forwarder configuration Log, integration, dashboard creation, visualization, pattern analysis
 
 ### Phase 3: Defensive Strategy Proposal
-- **Mohammed, Ammar, Ahmed**: Network-level defenses, testing, File permission hardening, documentation, User account security, before/after comparison
+- **Mohammed, and Ammar**: Network-level defenses, testing, File permission hardening, documentation, User account security, before/after comparison
 
 ## Project Overview
 
